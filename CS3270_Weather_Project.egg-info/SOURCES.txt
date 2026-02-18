@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+CS3270_Weather_Project.egg-info/PKG-INFO
+CS3270_Weather_Project.egg-info/SOURCES.txt
+CS3270_Weather_Project.egg-info/dependency_links.txt
+CS3270_Weather_Project.egg-info/requires.txt
+CS3270_Weather_Project.egg-info/top_level.txt
+weather_stats/__init__.py
+weather_stats/loader.py
+weather_stats/stats.py
