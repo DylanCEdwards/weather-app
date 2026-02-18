@@ -5,6 +5,9 @@ Provides the `WeatherStats` class which computes descriptive statistics
 for numeric columns in a `WeatherDataset`.
 """
 from typing import Iterator
+import logging
+
+logger = logging.getLogger(__name__)
 
 class WeatherStats:
     """
@@ -34,7 +37,9 @@ class WeatherStats:
             The mean as a float.
         """
         self._validate_column(column)
-        return self.data[column].mean()
+        mean = self.data[column].mean()
+        logger.debug(f"{column}: {mean}")
+        return mean
 
     def median(self, column: str) -> float:
         """
@@ -125,6 +130,7 @@ class WeatherStats:
             ValueError: If the column does not exist.
         """
         if not self.dataset.has_column(column):
+            logger.error("Column %s does not exist", column)
             raise ValueError(f"Column '{column}' not found in dataset")
 
     def temperature_summary(self, city: str) -> Iterator[tuple[str, float]]:
@@ -147,4 +153,3 @@ class WeatherStats:
         yield "Standard deviation", self.std_dev(base)
         yield "Range", self.range(base)
         yield "Mode", self.mode(base)
-

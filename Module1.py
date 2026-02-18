@@ -1,8 +1,8 @@
 """
 Filename: Module1.py
 Author: Dylan Edwards
-Date: 02/07/2026
-Version: Phase 3
+Date: 02/17/2026
+Version: Phase 4
 Description: This script loads weather prediction data from a CSV file and stores it
 in Python data structures via pandas. Documentation is done through docstrings
 to be used with pydoc. Demonstrates modularity by separating data loading and statistical
@@ -11,6 +11,10 @@ calculations into different modules.
 
 from weather_stats.loader import WeatherDataset, WeatherDataLoader
 from weather_stats.stats import WeatherStats
+import logging
+
+logging.basicConfig(filename='logs/weather.log', level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 def main():
     """
@@ -19,8 +23,9 @@ def main():
     Loads the CSV dataset, presents available cities, and prompts the
     user to request a temperature summary until they quit.
     """
-    file_name = "WeatherPredictionData/weather_prediction_dataset.csv"
-    loader = WeatherDataLoader(file_name)
+    logging.debug("Program started")
+    wd_file_name = "WeatherPredictionData/weather_prediction_dataset.csv"
+    loader = WeatherDataLoader(wd_file_name)
     dataset = loader.load()
     stats = WeatherStats(dataset)
 
@@ -36,6 +41,7 @@ def main():
 
         if not dataset.has_city(user_choice):
             print("City not found. Please try again.")
+            logging.warning("Invalid city entry: %s", user_choice)
             continue
 
         print(f"Temperature statistics for {user_choice}:")

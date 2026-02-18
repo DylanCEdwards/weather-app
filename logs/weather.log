@@ -1,0 +1,50 @@
+2026-02-17 20:31:22,881 - root - DEBUG - Program started
+2026-02-17 20:32:53,371 - root - DEBUG - Loader initialized
+2026-02-17 20:32:53,401 - root - DEBUG - Dataset loaded
+2026-02-17 20:32:53,401 - root - DEBUG - Data loaded
+2026-02-17 20:32:53,401 - root - DEBUG - Program started
+2026-02-17 20:34:54,624 - weather_stats.loader - DEBUG - Loader initialized
+2026-02-17 20:34:54,657 - weather_stats.dataset - DEBUG - Dataset loaded
+2026-02-17 20:34:54,657 - weather_stats.stats - DEBUG - Data loaded
+2026-02-17 20:34:54,657 - root - DEBUG - Program started
+2026-02-17 21:07:14,794 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-17 21:07:14,795 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:07:20,034 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:07:26,018 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:07:26,018 - root - WARNING - Invalid city entry: WINTER
+2026-02-17 21:15:05,550 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-17 21:15:05,552 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:15:05,553 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:15:19,831 - root - WARNING - Invalid city entry: HELLO
+2026-02-17 21:15:26,465 - root - WARNING - Invalid city entry: 1235&
+2026-02-17 21:16:21,384 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-17 21:16:21,386 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:16:43,317 - root - WARNING - Invalid city entry: DRIS
+2026-02-17 21:19:22,541 - root - DEBUG - Program started
+2026-02-17 21:19:22,542 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-17 21:19:22,574 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-17 21:19:22,576 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:19:26,497 - weather_stats.stats - DEBUG - OSLO_temp_mean: 0    2.4
+1    3.1
+Name: OSLO_temp_mean, dtype: float64
+2026-02-17 21:22:16,442 - root - DEBUG - Program started
+2026-02-17 21:22:16,442 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-17 21:22:16,471 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-17 21:22:16,474 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:22:19,712 - weather_stats.stats - DEBUG - ROMA_temp_mean: 16.059578544061303
+2026-02-17 21:22:41,253 - root - WARNING - Invalid city entry: 1234
+2026-02-17 21:24:11,325 - root - DEBUG - Program started
+2026-02-17 21:24:11,326 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-17 21:24:11,357 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-17 21:24:11,360 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:29:10,354 - root - DEBUG - Program started
+2026-02-17 21:29:10,354 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-17 21:29:10,385 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-17 21:29:10,387 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:32:44,778 - root - DEBUG - Program started
+2026-02-17 21:32:44,778 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-17 21:32:44,810 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-17 21:32:44,812 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-17 21:32:47,995 - weather_stats.stats - DEBUG - OSLO_temp_mean: 7.198193760262725
+2026-02-17 21:32:51,019 - weather_stats.stats - DEBUG - ROMA_temp_mean: 16.059578544061303
+2026-02-17 21:32:53,603 - root - WARNING - Invalid city entry: RAMA

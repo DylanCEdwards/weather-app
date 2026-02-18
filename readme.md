@@ -1,18 +1,15 @@
-# Module 1 - Phase 3 - Weather Data
+# Weather Data App
 
 ## Description
 
-This project practices reading CSV files
-and documenting code using Python docstrings, while following
-Pythonic coding standards. An understanding of modularization 
-has been introduced since the last version. 
+An iteratively-written weather app project as part of CS3270's curriculum. The finished project will fetch, process, analyze, and visualize weather data from various sources.
+
+
 
 ---
 
 ## Purpose
-This project was created as part of CS 3270 to practice
-working with pandas DataFrames, modularization and
-documentation.
+Provide utilities to safely read weather datasets into pandas, wrap the data in a purpose-built dataset class, and compute common summary statistics. The code is organized for clarity, testability, and reuse.
 
 ---
 
@@ -25,6 +22,14 @@ statistics. Constructors inject dependencies, instance methods
 operate on self, and input checks raise explicit exceptions 
 for predictable failures. Type hints plus docstrings are used to make 
 the API clear and easy to test.</city>
+
+---
+## Recent Changes
+### Phase 4
+- Refactored code to use generators & iterators for creating & processing the dataset, improving memory efficiency.
+- Implemented a logger to track data loading and processing steps, aiding in debugging and monitoring.
+
+---
 
 ## Project Files
 - `Module1.py` – Main Python script containing the CSV loading logic

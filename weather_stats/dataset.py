@@ -1,4 +1,7 @@
 import pandas as pd
+import logging
+
+logger = logging.getLogger(__name__)
 
 class WeatherDataset:
     """
@@ -16,9 +19,10 @@ class WeatherDataset:
             data: A pandas DataFrame containing weather measurements.
         """
         self._data = data
+        self.cities = self.get_cities()
 
     def __iter__(self):
-        for city in self.get_cities():
+        for city in self.cities:
             yield city
 
     def get_data(self) -> pd.DataFrame:
@@ -70,7 +74,8 @@ class WeatherDataset:
             if cities[i] == "DE":
                 cities[i] = "DE_BILT"
 
+        logger.info("Detected cities: %s", cities)
         return cities
 
     def has_city(self, city_name) -> bool:
-        return city_name in self.get_cities()
+        return city_name in self.cities
