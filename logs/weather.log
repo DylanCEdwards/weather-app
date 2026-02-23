@@ -48,3 +48,22 @@ Name: OSLO_temp_mean, dtype: float64
 2026-02-17 21:32:47,995 - weather_stats.stats - DEBUG - OSLO_temp_mean: 7.198193760262725
 2026-02-17 21:32:51,019 - weather_stats.stats - DEBUG - ROMA_temp_mean: 16.059578544061303
 2026-02-17 21:32:53,603 - root - WARNING - Invalid city entry: RAMA
+2026-02-19 19:53:14,636 - root - DEBUG - Program started
+2026-02-19 19:53:14,636 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-19 19:53:14,663 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-19 19:53:14,663 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-19 19:53:19,186 - weather_stats.stats - DEBUG - OSLO_temp_mean: 7.198193760262725
+2026-02-19 19:53:23,518 - weather_stats.stats - DEBUG - HEATHROW_temp_mean: 11.822386425834702
+2026-02-22 16:58:48,457 - root - DEBUG - Program started
+2026-02-22 16:58:48,457 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-22 16:58:48,490 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-22 16:58:48,492 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-22 16:58:53,614 - root - WARNING - Invalid city entry: OLSO
+2026-02-22 16:58:56,624 - weather_stats.stats - DEBUG - OSLO_temp_mean: 7.198193760262725
+2026-02-22 16:59:00,902 - weather_stats.stats - DEBUG - TOURS_temp_mean: 12.205801860974274
+2026-02-22 16:59:01,950 - root - WARNING - Invalid city entry: 	
+2026-02-22 17:02:55,268 - root - DEBUG - Program started
+2026-02-22 17:02:55,269 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-22 17:02:55,301 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-22 17:02:55,304 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-22 17:03:01,364 - weather_stats.stats - DEBUG - MALMO_temp_mean: 9.16496989600438

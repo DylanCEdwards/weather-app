@@ -25,6 +25,11 @@ the API clear and easy to test.</city>
 
 ---
 ## Recent Changes
+### Phase 5
+- Added automated unit tests using pytest.
+- Added doctest examples in selected methods to validate expected outputs directly from docstrings.
+- Created a dedicated tests/ directory to separate test logic from application code.
+
 ### Phase 4
 - Refactored code to use generators & iterators for creating & processing the dataset, improving memory efficiency.
 - Implemented a logger to track data loading and processing steps, aiding in debugging and monitoring.
@@ -39,10 +44,11 @@ the API clear and easy to test.</city>
 - `weather_stats/loader.py` - Module for loading & processing weather data from CSV
 - `weather_stats/stats.py` - Module for calculating statistics on weather data
 - `weather_stats/dataset.py` - Module for holding weather data and returning non-numerical data from the set
-
+- `tests/` - Directory containing pytest unit tests
 
 ---
 
 ## Requirements
 - Python 3.x
 - pandas
+- pytest

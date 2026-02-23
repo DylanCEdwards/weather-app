@@ -1,15 +1,15 @@
 """
 Filename: Module1.py
 Author: Dylan Edwards
-Date: 02/17/2026
-Version: Phase 4
+Date: 02/20/2026
+Version: Phase 5
 Description: This script loads weather prediction data from a CSV file and stores it
 in Python data structures via pandas. Documentation is done through docstrings
 to be used with pydoc. Demonstrates modularity by separating data loading and statistical
 calculations into different modules.
 """
 
-from weather_stats.loader import WeatherDataset, WeatherDataLoader
+from weather_stats.loader import WeatherDataLoader
 from weather_stats.stats import WeatherStats
 import logging
 

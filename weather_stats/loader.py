@@ -14,6 +14,12 @@ class WeatherDataLoader:
     """
     Loader class responsible for reading CSV weather data and returning
     a `WeatherDataset`.
+
+    Example:
+        >>> loader = WeatherDataLoader("weather.csv")
+        >>> dataset = loader.load()  # doctest: +SKIP
+        >>> isinstance(dataset, WeatherDataset)
+        True
     """
 
     def __init__(self, file_path: str):
@@ -31,6 +37,16 @@ class WeatherDataLoader:
 
         Returns:
             A WeatherDataset containing the loaded data.
+
+        Raises:
+            FileNotFoundError: If the file does not exist.
+            pandas.errors.ParserError: If the file cannot be parsed.
+
+        Example:
+            >>> loader = WeatherDataLoader("weather.csv")
+            >>> data = loader.load()  # doctest: +SKIP
+            >>> isinstance(data, WeatherDataset)
+            True
         """
         logger.debug("Reading CSV %s", self.file_path)
         try:

@@ -14,6 +14,15 @@ class WeatherStats:
     Compute descriptive statistics for a WeatherDataset.
 
     The class caches the underlying DataFrame for repeated computations.
+
+    Example:
+        >>> import pandas as pd
+        >>> from weather_stats.dataset import WeatherDataset
+        >>> df = pd.DataFrame({"UT_temp_mean": [10, 20, 30]})
+        >>> dataset = WeatherDataset(df)
+        >>> stats = WeatherStats(dataset)
+        >>> stats.mean("UT_temp_mean")
+        20.0
     """
 
     def __init__(self, dataset):
@@ -102,6 +111,14 @@ class WeatherStats:
 
         Returns:
             The range as a float.
+
+        Example:
+                >>> import pandas as pd
+                >>> from weather_stats.dataset import WeatherDataset
+                >>> df = pd.DataFrame({"UT_temp_mean": [10, 30]})
+                >>> stats = WeatherStats(WeatherDataset(df))
+                >>> stats.range("UT_temp_mean")
+                20
         """
         self._validate_column(column)
         return self.max(column) - self.min(column)
@@ -144,6 +161,17 @@ class WeatherStats:
 
         Returns:
             Tuples of (statistic name, value).
+
+        Example:
+        >>> import pandas as pd
+        >>> from weather_stats.dataset import WeatherDataset
+        >>> df = pd.DataFrame({"UT_temp_mean": [10, 20, 30]})
+        >>> stats = WeatherStats(WeatherDataset(df))
+        >>> summary = dict(stats.temperature_summary("UT"))
+        >>> summary["Mean"]
+        20.0
+        >>> summary["Range"]
+        20
         """
         base = f"{city}_temp_mean"
         yield "Mean", self.mean(base)

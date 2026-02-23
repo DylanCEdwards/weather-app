@@ -9,6 +9,15 @@ class WeatherDataset:
 
     Attributes:
         _data: The underlying pandas DataFrame containing weather data.
+
+    Example:
+        >>> import pandas as pd
+        >>> df = pd.DataFrame({"UT_temp_mean": [30, 40]})
+        >>> dataset = WeatherDataset(df)
+        >>> dataset.get_columns()
+        ['UT_temp_mean']
+        >>> dataset.has_city("UT")
+        True
     """
 
     def __init__(self, data: pd.DataFrame):
@@ -52,6 +61,15 @@ class WeatherDataset:
 
         Returns:
             True if the column exists, False otherwise.
+
+        Example:
+        >>> import pandas as pd
+        >>> df = pd.DataFrame({"UT_temp_mean": [30]})
+        >>> dataset = WeatherDataset(df)
+        >>> dataset.has_column("UT_temp_mean")
+        True
+        >>> dataset.has_column("CA_temp_mean")
+        False
         """
         return column in self._data.columns
 
@@ -66,6 +84,16 @@ class WeatherDataset:
 
         Returns:
             A list of unique city identifiers (strings).
+
+        Example:
+        >>> import pandas as pd
+        >>> df = pd.DataFrame({
+        ...     "UT_temp_mean": [30],
+        ...     "CA_temp_mean": [60]
+        ... })
+        >>> dataset = WeatherDataset(df)
+        >>> sorted(dataset.get_cities())
+        ['CA', 'UT']
         """
         cities = self._data.columns[self._data.columns.str.contains("_")].str.split("_").str[0].unique().tolist()
         for i in range(len(cities)):
@@ -78,4 +106,22 @@ class WeatherDataset:
         return cities
 
     def has_city(self, city_name) -> bool:
+        """
+        Check whether a given city identifier is present in the dataset.
+
+        Args:
+            city_name: The city identifier to check (for example ``'UT'`` or ``'DE_BILT'``).
+
+        Returns:
+            True if the city is present in the dataset's detected cities, False otherwise.
+
+        Example:
+        >>> import pandas as pd
+        >>> df = pd.DataFrame({"UT_temp_mean": [30], "DE_temp_mean": [40]})
+        >>> dataset = WeatherDataset(df)
+        >>> dataset.has_city("UT")
+        True
+        >>> dataset.has_city("NO_SUCH_CITY")
+        False
+        """
         return city_name in self.cities
