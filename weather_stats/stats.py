@@ -5,6 +5,10 @@ Provides the `WeatherStats` class which computes descriptive statistics
 for numeric columns in a `WeatherDataset`.
 """
 from typing import Iterator
+
+import pandas as pd
+from typing import Optional
+from weather_stats.dataset import WeatherDataset
 import logging
 
 logger = logging.getLogger(__name__)
@@ -25,89 +29,101 @@ class WeatherStats:
         20.0
     """
 
-    def __init__(self, dataset):
+    def __init__(self, dataset: WeatherDataset):
         """
         Create a WeatherStats instance.
 
         Args:
             dataset: The WeatherDataset to compute statistics on.
         """
-        self.dataset = dataset
-        self.data = dataset.get_data()
+        self._dataset = dataset
+        self._data = dataset.get_data()
 
-    def mean(self, column: str) -> float:
+    def mean(self, column: str, data: Optional[pd.DataFrame] = None) -> float:
         """
         Compute the mean of a column.
 
         Args:
             column: Column name.
+            data: Optional DataFrame to use for computation. If None, uses the dataset's DataFrame.
 
         Returns:
             The mean as a float.
         """
-        self._validate_column(column)
-        mean = self.data[column].mean()
+        self._validate_column(column, data)
+        df = data if data is not None else self._data
+        mean = df[column].mean()
         logger.debug(f"{column}: {mean}")
         return mean
 
-    def median(self, column: str) -> float:
+    def median(self, column: str, data: Optional[pd.DataFrame] = None) -> float:
         """
         Compute the median of a column.
 
         Args:
             column: Column name.
+            data: Optional DataFrame to use for computation. If None, uses the dataset's DataFrame.
+
 
         Returns:
             The median as a float.
         """
-        self._validate_column(column)
-        return self.data[column].median()
+        self._validate_column(column, data)
+        df = data if data is not None else self._data
+        return df[column].median()
 
-    def min(self, column: str) -> float:
+    def min(self, column: str, data: Optional[pd.DataFrame] = None) -> float:
         """
         Compute the minimum of a column.
 
         Args:
             column: Column name.
+            data: Optional DataFrame to use for computation. If None, uses the dataset's DataFrame.
 
         Returns:
             The minimum as a float.
         """
-        self._validate_column(column)
-        return self.data[column].min()
+        self._validate_column(column, data)
+        df = data if data is not None else self._data
+        return df[column].min()
 
-    def max(self, column: str) -> float:
+    def max(self, column: str, data: Optional[pd.DataFrame] = None) -> float:
         """
         Compute the maximum of a column.
 
         Args:
             column: Column name.
+            data: Optional DataFrame to use for computation. If None, uses the dataset's DataFrame.
 
         Returns:
             The maximum as a float.
         """
-        self._validate_column(column)
-        return self.data[column].max()
+        self._validate_column(column, data)
+        df = data if data is not None else self._data
+        return df[column].max()
 
-    def std_dev(self, column: str) -> float:
+    def std_dev(self, column: str, data: Optional[pd.DataFrame] = None) -> float:
         """
         Compute the standard deviation of a column.
 
         Args:
             column: Column name.
+            data: Optional DataFrame to use for computation. If None, uses the dataset's DataFrame.
 
         Returns:
             The standard deviation as a float.
         """
-        self._validate_column(column)
-        return self.data[column].std()
+        self._validate_column(column, data)
+        df = data if data is not None else self._data
+        return df[column].std()
 
-    def range(self, column: str) -> float:
+    def range(self, column: str, data: Optional[pd.DataFrame] = None) -> float:
         """
         Compute the range of a column.
 
         Args:
             column: Column name.
+            data: Optional DataFrame to use for computation. If None, uses the dataset's DataFrame.
 
         Returns:
             The range as a float.
@@ -120,23 +136,34 @@ class WeatherStats:
                 >>> stats.range("UT_temp_mean")
                 20
         """
-        self._validate_column(column)
-        return self.max(column) - self.min(column)
+        self._validate_column(column, data)
+        df = data if data is not None else self._data
+        return self.max(column, df) - self.min(column, df)
 
-    def mode(self, column: str) -> float:
+    def mode(self, column: str, data: Optional[pd.DataFrame] = None) -> float:
         """
         Compute the mode of a column.
 
         Args:
             column: Column name.
+            data: Optional DataFrame to use for computation. If None, uses the dataset's DataFrame.
 
         Returns:
             The mode as a float.
         """
-        self._validate_column(column)
-        return self.data[column].mode()[0]
+        self._validate_column(column, data)
+        df = data if data is not None else self._data
+        modes = df[column].mode()
+        if modes.empty:
+            logger.warning("No mode found for column %s (empty or all-NaN series)", column)
+            return float("nan")
+        try:
+            return float(modes.iloc[0])
+        except (TypeError, ValueError):
+            # fallback if mode value can't be converted to float
+            return float("nan")
 
-    def _validate_column(self, column: str):
+    def _validate_column(self, column: str, data: Optional[pd.DataFrame] = None):
         """
         Ensure the requested column exists in the dataset.
 
@@ -146,11 +173,12 @@ class WeatherStats:
         Raises:
             ValueError: If the column does not exist.
         """
-        if not self.dataset.has_column(column):
-            logger.error("Column %s does not exist", column)
+        df = data if data is not None else self._data
+        if column not in df.columns:
+            logger.error("Column %s does not exist in provided data", column)
             raise ValueError(f"Column '{column}' not found in dataset")
 
-    def temperature_summary(self, city: str) -> Iterator[tuple[str, float]]:
+    def temperature_summary(self, city: str, data: Optional[pd.DataFrame] = None) -> Iterator[tuple[str, float]]:
         """
         Produce a temperature summary for a given city.
 
@@ -158,6 +186,7 @@ class WeatherStats:
 
         Args:
             city: The city identifier.
+            data: Optional DataFrame. If provided, this will be used for all computations.
 
         Returns:
             Tuples of (statistic name, value).
@@ -174,10 +203,11 @@ class WeatherStats:
         20
         """
         base = f"{city}_temp_mean"
-        yield "Mean", self.mean(base)
-        yield "Median", self.median(base)
-        yield "Min", self.min(base)
-        yield "Max", self.max(base)
-        yield "Standard deviation", self.std_dev(base)
-        yield "Range", self.range(base)
-        yield "Mode", self.mode(base)
+
+        yield "Mean", self.mean(base, data)
+        yield "Median", self.median(base, data)
+        yield "Min", self.min(base, data)
+        yield "Max", self.max(base, data)
+        yield "Standard deviation", self.std_dev(base, data)
+        yield "Range", self.range(base, data)
+        yield "Mode", self.mode(base, data)

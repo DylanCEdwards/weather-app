@@ -67,3 +67,16 @@ Name: OSLO_temp_mean, dtype: float64
 2026-02-22 17:02:55,301 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
 2026-02-22 17:02:55,304 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
 2026-02-22 17:03:01,364 - weather_stats.stats - DEBUG - MALMO_temp_mean: 9.16496989600438
+2026-02-25 20:38:28,447 - root - DEBUG - Program started
+2026-02-25 20:38:28,447 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-25 20:38:28,477 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-25 20:38:28,480 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-25 20:38:42,034 - weather_stats.stats - DEBUG - STOCKHOLM_temp_mean: 8.049808429118775
+2026-02-25 20:38:54,775 - matplotlib.pyplot - DEBUG - Loaded backend macosx version unknown.
+2026-02-27 15:29:55,098 - root - DEBUG - Program started
+2026-02-27 15:29:55,098 - weather_stats.loader - DEBUG - Reading CSV WeatherPredictionData/weather_prediction_dataset.csv
+2026-02-27 15:29:55,156 - weather_stats.loader - INFO - Loaded CSV WeatherPredictionData/weather_prediction_dataset.csv (rows=3654, cols=165)
+2026-02-27 15:29:55,166 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-27 15:29:55,167 - weather_stats.dataset - INFO - Detected cities: ['BASEL', 'BUDAPEST', 'DE_BILT', 'DRESDEN', 'DUSSELDORF', 'HEATHROW', 'KASSEL', 'LJUBLJANA', 'MAASTRICHT', 'MALMO', 'MONTELIMAR', 'MUENCHEN', 'OSLO', 'PERPIGNAN', 'ROMA', 'SONNBLICK', 'STOCKHOLM', 'TOURS']
+2026-02-27 15:30:01,167 - weather_stats.stats - DEBUG - TOURS_temp_mean: 12.205801860974274
+2026-02-27 15:30:01,194 - matplotlib.pyplot - DEBUG - Loaded backend macosx version unknown.

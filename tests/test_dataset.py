@@ -19,7 +19,7 @@ def test_get_columns():
     df = sample_dataframe()
     dataset = WeatherDataset(df)
 
-    columns = dataset.get_columns()
+    columns = dataset.get_column_names()
 
     assert "SLC_temp_mean" in columns
     assert "LA_temp_mean" in columns

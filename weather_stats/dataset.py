@@ -14,7 +14,7 @@ class WeatherDataset:
         >>> import pandas as pd
         >>> df = pd.DataFrame({"UT_temp_mean": [30, 40]})
         >>> dataset = WeatherDataset(df)
-        >>> dataset.get_columns()
+        >>> dataset.get_column_names()
         ['UT_temp_mean']
         >>> dataset.has_city("UT")
         True
@@ -28,10 +28,12 @@ class WeatherDataset:
             data: A pandas DataFrame containing weather measurements.
         """
         self._data = data
-        self.cities = self.get_cities()
+        self._data['DATE'] = pd.to_datetime(data['DATE'], format='%Y%m%d')
+        self._data = self._data.set_index('DATE')
+        self._cities = self.get_cities()
 
     def __iter__(self):
-        for city in self.cities:
+        for city in self._cities:
             yield city
 
     def get_data(self) -> pd.DataFrame:
@@ -43,7 +45,7 @@ class WeatherDataset:
         """
         return self._data
 
-    def get_columns(self) -> list[str]:
+    def get_column_names(self) -> list[str]:
         """
         Return a list of column names present in the dataset.
 
@@ -124,4 +126,89 @@ class WeatherDataset:
         >>> dataset.has_city("NO_SUCH_CITY")
         False
         """
-        return city_name in self.cities
+        return city_name in self._cities
+
+    def filter_by_month(self, month: int) -> pd.DataFrame:
+        """
+        Filter the dataset to include only rows from a specific month across all years.
+
+        Args:
+            month: The month to filter by (1-12).
+
+        Returns:
+            A new DataFrame containing only rows from the specified month.
+        """
+        return self._data[self._data.index.month == month]
+
+    def filter_by_year(self, year: int) -> pd.DataFrame:
+        """
+        Filter the dataset to include only rows from a specific year.
+
+        Args:
+            year: The year to filter by (e.g., 2020).
+        Returns:
+            A new DataFrame containing only rows from the specified year.
+        """
+        return self._data[self._data.index.year == year]
+
+    def filter_by_month_and_year(self, month: int, year: int) -> pd.DataFrame:
+        """
+        Filter the dataset to include only rows from a specific month and year.
+
+        Args:
+            month: The month to filter by (1-12).
+            year: The year to filter by (e.g., 2020).
+
+        Returns:
+            A new DataFrame containing only rows from the specified month and year.
+        """
+        return self._data[(self._data.index.month == month) & (self._data.index.year == year)]
+
+    def filter_by_date_range(self, start_date: str, end_date: str) -> pd.DataFrame:
+        """
+        Filter the dataset to include only rows within a specific date range.
+
+        Args:
+            start_date: The start date of the range (inclusive) in 'YYYY-MM-DD' format.
+            end_date: The end date of the range (inclusive) in 'YYYY-MM-DD' format.
+
+        Returns:
+            A new DataFrame containing only rows within the specified date range.
+        """
+
+        start = pd.to_datetime(start_date)
+        end = pd.to_datetime(end_date)
+        return self._data.loc[start:end]
+
+    def filter_by_season(self, season: str) -> pd.DataFrame:
+        """
+        Filter the dataset to include only rows from a specific season.
+
+        Seasons are defined as follows:
+            - Spring: March 1 to May 31
+            - Summer: June 1 to August 31
+            - Fall: September 1 to November 30
+            - Winter: December 1 to February 28/29
+
+        Args:
+            season: The season to filter by ('spring', 'summer', 'fall', 'winter').
+
+        Returns:
+            A new DataFrame containing only rows from the specified season.
+        """
+        season = season.lower()
+        if season == 'spring':
+            return self._data[(self._data.index.month >= 3) & (self._data.index.month <= 5)]
+        elif season == 'summer':
+            return self._data[(self._data.index.month >= 6) & (self._data.index.month <= 8)]
+        elif season == 'fall':
+            return self._data[(self._data.index.month >= 9) & (self._data.index.month <= 11)]
+        elif season == 'winter':
+            return self._data[(self._data.index.month == 12) | (self._data.index.month <= 2)]
+        else:
+            raise ValueError("Invalid season. Must be one of: 'spring', 'summer', 'fall', 'winter'.")
+
+
+
+
+
